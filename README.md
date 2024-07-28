@@ -35,6 +35,7 @@ This will run all the tests in the `tests/` directory.
 - `Dockerfile`: Defines the Docker image for the application
 - `docker-compose.yml`: Defines the services for running the app and tests
 - `requirements.txt`: Lists the Python dependencies
+- `Output`: Contains screenshots of the outputs
 
 ## Notes
 
