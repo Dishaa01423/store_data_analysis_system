@@ -14,7 +14,8 @@ def load_data(file_path):
         raise ValueError("Error parsing the CSV file. Please check the file format.")
 
 def compute_monthly_revenue(df):
-    monthly_revenue = df.groupby(df['order_date'].dt.to_period('M'))['total_amount'].sum()
+    df['revenue'] = df['product_price'] * df['quantity']
+    monthly_revenue = df.groupby(df['order_date'].dt.to_period('M'))['revenue'].sum()
     # Convert Period index to string
     monthly_revenue.index = monthly_revenue.index.astype(str)
     return monthly_revenue
