@@ -7,7 +7,9 @@ from .utils import load_data, compute_monthly_revenue, compute_product_revenue, 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-app = Flask(__name__, static_folder='static', template_folder='templates')
+template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'templates'))
+static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'static'))
+app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
 
 @app.route('/')
 def index():
@@ -15,8 +17,8 @@ def index():
     try:
         return render_template('index.html')
     except Exception as e:
-        logger.exception("Error rendering index template: %s", str(e))
-        return jsonify({"error": "Error rendering page"}), 500
+        logger.exception(f"Error rendering index template: {str(e)}")
+        return jsonify({"error": f"Error rendering page: {str(e)}"}), 500
 
 @app.route('/api/monthly_revenue')
 def api_monthly_revenue():
