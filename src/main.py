@@ -28,8 +28,8 @@ def api_monthly_revenue():
         monthly_revenue = compute_monthly_revenue(df)
         return jsonify(monthly_revenue.to_dict())
     except Exception as e:
-        logger.exception("Error computing monthly revenue: %s", str(e))
-        return jsonify({"error": "Error computing monthly revenue"}), 500
+        logger.exception(f"Error computing monthly revenue: {str(e)}")
+        return jsonify({"error": f"Error computing monthly revenue: {str(e)}"}), 500
 
 @app.route('/api/product_revenue')
 def api_product_revenue():
