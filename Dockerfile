@@ -9,4 +9,4 @@ COPY src/ ./src/
 COPY data/ ./data/
 COPY tests/ ./tests/
 
-CMD ["python", "src/main.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "src.main:app"]
