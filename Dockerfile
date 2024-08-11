@@ -4,4 +4,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 ENV PYTHONPATH=/app:$PYTHONPATH
-CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "src.main:app", "--log-level", "debug"]
+ENV PORT=8000
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
+CMD ["./entrypoint.sh"]
