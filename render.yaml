@@ -6,6 +6,8 @@ services:
     envVars:
       - key: PORT
         value: "10000"
+      - key: PYTHON_BUILDPACK_CLEAR_CACHE
+        value: "1"
     disk:
       name: data
       mountPath: /app/data
