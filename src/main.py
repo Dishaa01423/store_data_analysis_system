@@ -1,4 +1,4 @@
-import pandas as pd
+import os
 from flask import Flask, render_template, jsonify
 from utils import load_data, compute_monthly_revenue, compute_product_revenue, compute_customer_revenue, get_top_customers
 
@@ -33,5 +33,6 @@ def api_top_customers():
     return jsonify(top_10_customers.to_dict())
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 8000))
     app.run(host='0.0.0.0', port=port)
+
