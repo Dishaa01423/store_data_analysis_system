@@ -1,14 +1,8 @@
 services:
   - type: web
-    name: store_data_analysis
+    name: your-app-name
     env: docker
     dockerfilePath: ./Dockerfile
     envVars:
       - key: PORT
         value: "10000"
-      - key: PYTHON_BUILDPACK_CLEAR_CACHE
-        value: "1"
-    disk:
-      name: data
-      mountPath: /app/data
-      sizeGB: 1
