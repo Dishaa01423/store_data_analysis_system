@@ -3,7 +3,7 @@ services:
     name: store_data_analysis
     env: docker
     dockerfilePath: ./Dockerfile
-    dockerCommand: gunicorn --bind 0.0.0.0:$PORT src.main:app
+    dockerCommand: sh -c "gunicorn --bind 0.0.0.0:$PORT src.main:app"
     disk:
       name: data
       mountPath: /app/data
