@@ -7,7 +7,7 @@ from .utils import load_data, compute_monthly_revenue, compute_product_revenue, 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', template_folder='templates')
 
 @app.route('/')
 def index():
