@@ -1,7 +1,7 @@
 import os
 import logging
 from flask import Flask, render_template, jsonify
-from utils import load_data, compute_monthly_revenue, compute_product_revenue, compute_customer_revenue, get_top_customers
+from src.utils import load_data, compute_monthly_revenue, compute_product_revenue, compute_customer_revenue, get_top_customers
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
