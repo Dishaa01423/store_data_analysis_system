@@ -1,33 +1,36 @@
 import pandas as pd
+from flask import Flask, render_template, jsonify
 from utils import load_data, compute_monthly_revenue, compute_product_revenue, compute_customer_revenue, get_top_customers
 
-def main():
-    try:
-        # Load data
-        df = load_data('data/orders.csv')
+app = Flask(__name__)
 
-        # Compute monthly revenue
-        monthly_revenue = compute_monthly_revenue(df)
-        print("Monthly Revenue:")
-        print(monthly_revenue)
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-        # Compute product revenue
-        product_revenue = compute_product_revenue(df)
-        print("\nProduct Revenue:")
-        print(product_revenue)
+@app.route('/api/monthly_revenue')
+def api_monthly_revenue():
+    df = load_data('data/orders.csv')
+    monthly_revenue = compute_monthly_revenue(df)
+    return jsonify(monthly_revenue.to_dict())
 
-        # Compute customer revenue
-        customer_revenue = compute_customer_revenue(df)
-        print("\nCustomer Revenue:")
-        print(customer_revenue)
+@app.route('/api/product_revenue')
+def api_product_revenue():
+    df = load_data('data/orders.csv')
+    product_revenue = compute_product_revenue(df)
+    return jsonify(product_revenue.to_dict())
 
-        # Get top 10 customers
-        top_10_customers = get_top_customers(df, 10)
-        print("\nTop 10 Customers by Revenue:")
-        print(top_10_customers)
+@app.route('/api/customer_revenue')
+def api_customer_revenue():
+    df = load_data('data/orders.csv')
+    customer_revenue = compute_customer_revenue(df)
+    return jsonify(customer_revenue.to_dict())
 
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
+@app.route('/api/top_customers')
+def api_top_customers():
+    df = load_data('data/orders.csv')
+    top_10_customers = get_top_customers(df, 10)
+    return jsonify(top_10_customers.to_dict())
 
 if __name__ == "__main__":
-    main()
+    app.run(debug=True)
