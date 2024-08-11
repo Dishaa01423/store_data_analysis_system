@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revenue Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Revenue Dashboard</h1>
+    </header>
+    <main>
+        <section id="monthly-revenue">
+            <h2>Monthly Revenue</h2>
+            <div id="monthly-revenue-chart"></div>
+        </section>
+        <section id="product-revenue">
+            <h2>Product Revenue</h2>
+            <div id="product-revenue-chart"></div>
+        </section>
+        <section id="customer-revenue">
+            <h2>Customer Revenue</h2>
+            <div id="customer-revenue-chart"></div>
+        </section>
+        <section id="top-customers">
+            <h2>Top 10 Customers</h2>
+            <div id="top-customers-list"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Your Company Name</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
