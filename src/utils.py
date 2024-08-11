@@ -13,11 +13,11 @@ def load_data(file_path):
     except pd.errors.ParserError:
         raise ValueError("Error parsing the CSV file. Please check the file format.")
 
-# def compute_monthly_revenue(df):
-#     monthly_revenue = df.groupby(df['order_date'].dt.to_period('M'))['total_amount'].sum()
-#     # Convert Period index to string
-#     monthly_revenue.index = monthly_revenue.index.astype(str)
-#     return monthly_revenue
+def compute_monthly_revenue(df):
+    monthly_revenue = df.groupby(df['order_date'].dt.to_period('M'))['total_amount'].sum()
+    # Convert Period index to string
+    monthly_revenue.index = monthly_revenue.index.astype(str)
+    return monthly_revenue
 
 # def compute_product_revenue(df):
 #     product_revenue = df.groupby('product_id')['total_amount'].sum()
@@ -31,10 +31,10 @@ def load_data(file_path):
 #     top_customers = df.groupby('customer_id')['total_amount'].sum().nlargest(n)
 #     return top_customers
 
-def compute_monthly_revenue(df):
-    df['revenue'] = df['product_price'] * df['quantity']
-    monthly_revenue = df.groupby(df['order_date'].dt.to_period('M'))['revenue'].sum()
-    return monthly_revenue.sort_index()
+# def compute_monthly_revenue(df):
+#     df['revenue'] = df['product_price'] * df['quantity']
+#     monthly_revenue = df.groupby(df['order_date'].dt.to_period('M'))['revenue'].sum()
+#     return monthly_revenue.sort_index()
 
 def compute_product_revenue(df):
     df['revenue'] = df['product_price'] * df['quantity']
